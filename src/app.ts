@@ -1,2 +1,9 @@
-const text: string = 'Hello, world!';
-console.log(text);
+import { Server } from './presentation/server';
+
+(async () => {
+  main();
+})();
+
+function main() {
+  Server.start();
+}
