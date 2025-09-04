@@ -38,7 +38,32 @@ export class FileSystemDatasource implements LogDatasource {
     }
   }
 
+  private async readLogsFromFile(filePath: string): Promise<LogEntity[]> {
+    try {
+      const data = fs.readFileSync(filePath, 'utf-8');
+      if (!data) {
+        return [];
+      }
+      return data
+        .trim()
+        .split('\n')
+        .map(line => JSON.parse(line) as LogEntity);
+    } catch (error) {
+      console.error(`Error reading logs from file ${filePath}:`, error);
+      return [];
+    }
+  }
+
   async getLogs(level: LogLevel): Promise<LogEntity[]> {
-    throw new Error('Method not implemented.');
+    switch (level) {
+      case 'low':
+        return this.readLogsFromFile(this.allLogsPath);
+      case 'medium':
+        return this.readLogsFromFile(this.mediumLogsPath);
+      case 'high':
+        return this.readLogsFromFile(this.highLogsPath);
+      default:
+        return [];
+    }
   }
 }
