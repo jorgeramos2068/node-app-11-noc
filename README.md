@@ -13,6 +13,10 @@ Node.js application with TypeScript which represents a Network Operations Center
 
 ## Installation:
 
+- Create a copy of the `.env.template` file and rename it to `.env`.
+
+- Add the environment variables.
+
 - In the project directory, choose the correct Node version with:
 
 ```
