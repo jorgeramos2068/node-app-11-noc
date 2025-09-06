@@ -21,13 +21,21 @@ export class CheckService implements CheckServiceUseCase {
       if (!req.ok) {
         throw new Error(`Failed to fetch ${url}`);
       }
-      const log = new LogEntity('low', `Successfully fetched ${url}`);
+      const log = new LogEntity({
+        level: 'low',
+        message: `Successfully fetched ${url}`,
+        origin: 'check.service.ts',
+      });
       this.logRepository.saveLog(log);
       this.successCallback && this.successCallback();
       return true;
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-      const log = new LogEntity('high', errorMessage);
+      const log = new LogEntity({
+        level: 'high',
+        message: errorMessage,
+        origin: 'check.service.ts',
+      });
       this.logRepository.saveLog(log);
       this.errorCallback && this.errorCallback(errorMessage);
       return false;
