@@ -11,7 +11,7 @@ export class Server {
     console.log('Server has started');
 
     // Email
-    // const emailService = new EmailService();
+    // const emailService = new EmailService(fileSystemLogRepository);
     // emailService.sendEmailWithLogFiles('test@gmail.com');
 
     // Cron Job Example
