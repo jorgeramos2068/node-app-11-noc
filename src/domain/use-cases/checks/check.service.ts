@@ -1,5 +1,5 @@
-import { LogEntity } from '../../entities/log.entity';
-import { LogRepository } from '../../repositories/log.repository';
+import { LogEntity } from '@/domain/entities/log.entity';
+import { LogRepository } from '@/domain/repositories/log.repository';
 
 interface CheckServiceUseCase {
   execute(url: string): Promise<boolean>;
