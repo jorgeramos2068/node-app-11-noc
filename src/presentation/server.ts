@@ -9,12 +9,12 @@ const fileSystemLogRepository = new LogRepositoryImpl(new FileSystemDatasource()
 export class Server {
   public static start() {
     console.log('Server has started');
-    const emailService = new EmailService();
-    emailService.sendEmail({
-      to: 'something@gmail.com',
-      subject: 'Test Email',
-      htmlBody: '<h1>Hello World</h1>',
-    });
+
+    // Email
+    // const emailService = new EmailService();
+    // emailService.sendEmailWithLogFiles('test@gmail.com');
+
+    // Cron Job Example
     // CronService.createJob('*/5 * * * * *', () => {
     //   const url = 'https://google.com';
     //   new CheckService(
