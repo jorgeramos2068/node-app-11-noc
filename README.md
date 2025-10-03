@@ -17,6 +17,12 @@ Node.js application with TypeScript which represents a Network Operations Center
 
 - Add the environment variables.
 
+- Run database systems with:
+
+```
+docker compose up -d
+```
+
 - In the project directory, choose the correct Node version with:
 
 ```

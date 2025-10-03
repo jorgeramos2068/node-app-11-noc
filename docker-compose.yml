@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   mongo-db:
     image: mongo:latest
@@ -11,3 +9,14 @@ services:
       - 27017:27017
     volumes:
       - ./data/mongo:/data/db
+  postgres-db:
+    image: postgres:15.3
+    restart: always
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - 5432:5432
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
