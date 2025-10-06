@@ -1,5 +1,6 @@
 import { envs } from '@/config/plugins/env.plugin';
 import { MongoDatabase } from '@/data/mongo';
+import { PrismaClient } from '@/generated/prisma';
 import { Server } from '@/presentation/server';
 
 (async () => {
@@ -7,7 +8,17 @@ import { Server } from '@/presentation/server';
     mongoUrl: envs.MONGO_URL,
     dbName: envs.MONGO_DB_NAME,
   });
-  main();
+  const prisma = new PrismaClient();
+  const newLog = await prisma.logModel.create({
+    data: {
+      level: 'HIGH',
+      message: 'Test message',
+      origin: 'app.ts',
+    },
+  });
+  console.log('New log created:', newLog);
+  await prisma.$disconnect();
+  // main();
 })();
 
 function main() {
