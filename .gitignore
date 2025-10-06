@@ -142,5 +142,8 @@ vite.config.ts.timestamp-*
 # Databases
 /data
 
+# Prisma
+/src/generated/prisma
+
 # Other
 .DS_Store
